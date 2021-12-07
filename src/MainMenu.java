@@ -1,19 +1,18 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MainMenu extends JFrame {
-    JButton partOne = new JButton("Part 1");
-    JButton partTwo = new JButton("Part 2");
+public class MainMenu extends JPanel {
+    JButton partOne;
+    JButton partTwo;
 
     public MainMenu() {
-        super("DS Final Project");
-        setSize(300, 220);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setOpaque(true);
+        partOne = new JButton("Click for Part 1");
+        partTwo = new JButton("Click for Part 2");
 
-        JPanel pane = new JPanel();
-        pane.add(partOne);
-        pane.add(partTwo);
-        add(pane);
-        setVisible(true);
+        add(partOne);
+        add(partTwo);
     }
 
     private static void setLookAndFeel() {

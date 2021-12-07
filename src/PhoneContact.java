@@ -1,4 +1,5 @@
 public class PhoneContact {
+    public String SearchKey;
     public int Number;
     public String GivenName;
     public String Surname;
@@ -9,8 +10,9 @@ public class PhoneContact {
     public String EmailAddress;
     public String TelephoneNumber;
 
-    public PhoneContact(int number, String givenName, String surname, String streetAddress, String city, String state, int zipCode, String emailAddress, String telephoneNumber) {
+    public PhoneContact(String searchKey, int number, String givenName, String surname, String streetAddress, String city, String state, int zipCode, String emailAddress, String telephoneNumber) {
 
+        SearchKey = searchKey;
         Number = number;
         GivenName = givenName;
         Surname = surname;
