@@ -1,18 +1,19 @@
 public class PhoneContact {
     public String SearchKey;
-    public int Number;
+    public String Number;
     public String GivenName;
     public String Surname;
     public String StreetAddress;
     public String City;
     public String State;
-    public int ZipCode;
+    public String ZipCode;
     public String EmailAddress;
     public String TelephoneNumber;
 
-    public PhoneContact(String searchKey, int number, String givenName, String surname, String streetAddress, String city, String state, int zipCode, String emailAddress, String telephoneNumber) {
-
-        SearchKey = searchKey;
+    public PhoneContact(String number, String givenName,
+                        String surname, String streetAddress, String city,
+                        String state, String zipCode, String emailAddress,
+                        String telephoneNumber) {
         Number = number;
         GivenName = givenName;
         Surname = surname;
@@ -22,6 +23,10 @@ public class PhoneContact {
         ZipCode = zipCode;
         EmailAddress = emailAddress;
         TelephoneNumber = telephoneNumber;
+    }
+
+    public void setSearchKey(String searchKey) {
+        SearchKey = searchKey;
     }
 
     @Override

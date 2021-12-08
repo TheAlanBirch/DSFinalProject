@@ -1,5 +1,5 @@
 import javax.swing.*;
-import javax.xml.crypto.Data;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +8,7 @@ public class Main extends JFrame{
     MainMenu mainMenu = new MainMenu();
     SearchPanel searchPanel = new SearchPanel();
     DataStructuresPanel dataStructuresPanel = new DataStructuresPanel();
+    String DataStructureChoice;
 
     public Main() {
         super("DS Final Project");
@@ -25,17 +26,17 @@ public class Main extends JFrame{
         });
 
         dataStructuresPanel.confirmButton.addActionListener(e -> {
-            dataStructuresPanel.dataStructureChoice
+            DataStructureChoice = (String) dataStructuresPanel.dataStructureBox.getSelectedItem();
             remove(dataStructuresPanel);
             add(searchPanel, BorderLayout.CENTER);
             pack();
         });
 
-        searchPanel.searchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                searchPanel.confirmationLabel.setText("Search Button was clicked");
-            }
+        searchPanel.searchButton.addActionListener(e -> {
+            if (searchPanel.searchTerm.getText().length() == 0)
+                searchPanel.confirmationLabel.setText("You must enter something into the field in order to search!");
+            else
+                searchPanel.confirmationLabel.setText("The DataStructure to be searched is a " + DataStructureChoice);
         });
         setLocation(10, 200);
         add(mainMenu, BorderLayout.CENTER);
