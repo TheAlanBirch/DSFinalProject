@@ -1,18 +1,18 @@
 public class PhoneContact {
     public String SearchKey;
-    public String Number;
+    public int Number;
     public String GivenName;
     public String Surname;
     public String StreetAddress;
     public String City;
     public String State;
-    public String ZipCode;
+    public int ZipCode;
     public String EmailAddress;
     public String TelephoneNumber;
 
-    public PhoneContact(String number, String givenName,
+    public PhoneContact(int number, String givenName,
                         String surname, String streetAddress, String city,
-                        String state, String zipCode, String emailAddress,
+                        String state, int zipCode, String emailAddress,
                         String telephoneNumber) {
         Number = number;
         GivenName = givenName;
@@ -23,18 +23,16 @@ public class PhoneContact {
         ZipCode = zipCode;
         EmailAddress = emailAddress;
         TelephoneNumber = telephoneNumber;
-    }
-
-    public void setSearchKey(String searchKey) {
-        SearchKey = searchKey;
+        SearchKey = GivenName + " " + Surname;
     }
 
     @Override
     public String toString() {
-        return "PhoneContact [Number=" + Number + ", GivenName=" + GivenName
-                + ", Surname=" + Surname + ", StreetAddress=" + StreetAddress
-                + ", City=" + City + ", State=" + State + ", ZipCode="
-                + ZipCode + ", EmailAddress=" + EmailAddress
-                + ", TelephoneNumber=" + TelephoneNumber + "]";
+//        return "PhoneContact [Number=" + Number + ", GivenName=" + GivenName
+//                + ", Surname=" + Surname + ", StreetAddress=" + StreetAddress
+//                + ", City=" + City + ", State=" + State + ", ZipCode="
+//                + ZipCode + ", EmailAddress=" + EmailAddress
+//                + ", TelephoneNumber=" + TelephoneNumber + "]";
+        return Number + ". " + SearchKey;
     }
 }

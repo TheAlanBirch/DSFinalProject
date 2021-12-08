@@ -38,7 +38,7 @@ public class Main extends JFrame{
             else
                 searchPanel.confirmationLabel.setText("The DataStructure to be searched is a " + DataStructureChoice);
         });
-        setLocation(10, 200);
+        setLocation(800, 400);
         add(mainMenu, BorderLayout.CENTER);
         pack();
         setVisible(true);
