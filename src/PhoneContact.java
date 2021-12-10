@@ -28,11 +28,11 @@ public class PhoneContact {
 
     @Override
     public String toString() {
-//        return "PhoneContact [Number=" + Number + ", GivenName=" + GivenName
-//                + ", Surname=" + Surname + ", StreetAddress=" + StreetAddress
-//                + ", City=" + City + ", State=" + State + ", ZipCode="
-//                + ZipCode + ", EmailAddress=" + EmailAddress
-//                + ", TelephoneNumber=" + TelephoneNumber + "]";
-        return Number + ". " + SearchKey;
+        return SearchKey + ": [Number=" + Number + ", GivenName=" + GivenName
+                + ", Surname=" + Surname + ", StreetAddress=" + StreetAddress
+                + ", City=" + City + ", State=" + State + ", ZipCode="
+                + ZipCode + ", EmailAddress=" + EmailAddress
+                + ", TelephoneNumber=" + TelephoneNumber + "]";
+//        return Number + ". " + SearchKey;
     }
 }
