@@ -9,12 +9,14 @@ public class Main extends JFrame{
     SearchPanel searchPanel = new SearchPanel();
     DataStructuresPanel dataStructuresPanel = new DataStructuresPanel();
     String DataStructureChoice;
+    String FileSizeChoice;
+    CsvReader reader = new CsvReader();
+    DataStructureStorage storage = new DataStructureStorage();
 
     public Main() {
         super("DS Final Project");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        searchPanel.setPreferredSize(new Dimension(500, 420));
-
+        setPreferredSize(new Dimension(500, 420));
     }
 
     private void displayGUI()
@@ -27,6 +29,8 @@ public class Main extends JFrame{
 
         dataStructuresPanel.confirmButton.addActionListener(e -> {
             DataStructureChoice = (String) dataStructuresPanel.dataStructureBox.getSelectedItem();
+            FileSizeChoice = dataStructuresPanel.fileSizeChoices.getSelection().getActionCommand();
+            reader.readFile(DataStructureChoice, FileSizeChoice, storage);
             remove(dataStructuresPanel);
             add(searchPanel, BorderLayout.CENTER);
             pack();
