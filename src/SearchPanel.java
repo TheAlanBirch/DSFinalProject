@@ -7,11 +7,9 @@ public class SearchPanel extends JPanel{
     JButton searchButton = new JButton("Search");
     JLabel confirmationLabel = new JLabel("");
 
-
     public SearchPanel() {
 
         JLabel searchTermLabel = new JLabel("Search Key: ");
-
 
         add(searchTermLabel);
         add(searchTerm);

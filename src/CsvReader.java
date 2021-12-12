@@ -24,7 +24,7 @@ public class CsvReader {
             case "Linked List" -> readLinkedList(fileSizeChoice, dataStructureStorage.phoneContactLinkedList);
             case "Red-Black Tree" -> readRBTreeMap(fileSizeChoice, dataStructureStorage.phoneContactRBTreeMap);
             case "Hashtable" -> readHashtable(fileSizeChoice, dataStructureStorage.phoneContactHashtable);
-            case "Custom" -> readHeap(fileSizeChoice, dataStructureStorage.phoneContactHeapAdaptablePriorityQueue);
+            case "Custom" -> readHeap(fileSizeChoice, dataStructureStorage.phoneContactHeap);
         }
     }
 

@@ -41,9 +41,11 @@ public class DataStructuresPanel extends JPanel {
         mediumFile.setActionCommand("data/medium.csv");
         largeFile.setActionCommand("data/large.csv");
 
+        add(Box.createHorizontalStrut(100));
         add(dataStructureLabel);
         add(dataStructureBox);
-        add(spaceLabel);
+        add(Box.createHorizontalStrut(100));
+
         add(fileSizeLabel);
         add(tinyFile);
         add(smallFile);
