@@ -13,7 +13,8 @@ import java.io.*;
 // %20BufferedReader%20class.
 
 public class CsvReader {
-    public long elapsedTime;
+    public long memoryUsage;
+    Runtime runtime = Runtime.getRuntime();
 
     public void readFile(String dataStructureChoice, String fileSizeChoice, DataStructureStorage dataStructureStorage) {
         switch (dataStructureChoice) { // {"Array", "Linked List","Red-Black Tree", "Hashtable", "Custom"};
@@ -36,7 +37,6 @@ public class CsvReader {
             String line = "";
             String[] tempArr;
 
-            long startTime = System.currentTimeMillis();
             while((line = br.readLine()) != null) {
                 if (!line.contains("Number")) {
                     tempArr = line.split(",");
@@ -48,8 +48,8 @@ public class CsvReader {
                     phoneArray[contactOne.Number - 1] = contactOne;
                 }
             }
-            long endTime = System.currentTimeMillis();
-            elapsedTime = endTime - startTime;
+
+
             br.close();
 
             System.out.println(csvFile + " loaded into array");
@@ -66,7 +66,6 @@ public class CsvReader {
             String line = "";
             String[] tempArr;
 
-            long startTime = System.currentTimeMillis();
             while((line = br.readLine()) != null) {
                 if (!line.contains("Number")) {
                     tempArr = line.split(",");
@@ -78,8 +77,6 @@ public class CsvReader {
                     phoneLinkedList.add(contactOne);
                 }
             }
-            long endTime = System.currentTimeMillis();
-            elapsedTime = endTime - startTime;
             br.close();
 
             System.out.println(csvFile + " loaded into array");
@@ -96,7 +93,6 @@ public class CsvReader {
             String line = "";
             String[] tempArr;
 
-            long startTime = System.currentTimeMillis();
             while((line = br.readLine()) != null) {
                 if (!line.contains("Number")) {
                     tempArr = line.split(",");
@@ -108,8 +104,6 @@ public class CsvReader {
                     phoneRBTreeMap.put(contactOne.SearchKey, contactOne);
                 }
             }
-            long endTime = System.currentTimeMillis();
-            elapsedTime = endTime - startTime;
             br.close();
 
             System.out.println(csvFile + " loaded into array");
@@ -126,7 +120,6 @@ public class CsvReader {
             String line = "";
             String[] tempArr;
 
-            long startTime = System.currentTimeMillis();
             while((line = br.readLine()) != null) {
                 if (!line.contains("Number")) {
                     tempArr = line.split(",");
@@ -138,8 +131,6 @@ public class CsvReader {
                     phoneHashtable.put(contactOne.SearchKey, contactOne);
                 }
             }
-            long endTime = System.currentTimeMillis();
-            elapsedTime = endTime - startTime;
             br.close();
 
             System.out.println(csvFile + " loaded into array");
@@ -156,7 +147,6 @@ public class CsvReader {
             String line = "";
             String[] tempArr;
 
-            long startTime = System.currentTimeMillis();
             while((line = br.readLine()) != null) {
                 if (!line.contains("Number")) {
                     tempArr = line.split(",");
@@ -168,8 +158,6 @@ public class CsvReader {
                     phoneHeap.insert(contactOne.SearchKey, contactOne);
                 }
             }
-            long endTime = System.currentTimeMillis();
-            elapsedTime = endTime - startTime;
             br.close();
 
             System.out.println(csvFile + " loaded into array");

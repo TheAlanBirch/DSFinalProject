@@ -2,11 +2,6 @@ import javax.swing.*;
 import javax.xml.crypto.Data;
 
 public class DataStructuresPanel extends JPanel {
-    int fileSizeChoice;      // 1: Tiny,
-                             // 2: Small,
-                             // 3: Medium,
-                             // 4: Large
-
     JRadioButton tinyFile = new JRadioButton("Tiny File");
     JRadioButton smallFile = new JRadioButton("Small File");
     JRadioButton mediumFile = new JRadioButton("Medium File");
@@ -23,10 +18,6 @@ public class DataStructuresPanel extends JPanel {
         JLabel dataStructureLabel = new JLabel(
                 "Data Structures to search:"
         );
-
-        // This label is purely to make the file size choice go to a new line
-        // I am unsure how to add a separator in the way I want
-        JLabel spaceLabel = new JLabel("                    ");
 
         JLabel fileSizeLabel = new JLabel("File sizes that can be loaded: ");
 

@@ -1,10 +1,10 @@
-import goodrichStructures.Entry;
 import goodrichStructures.HeapAdaptablePriorityQueue;
 import goodrichStructures.RBTreeMap;
 
 import java.util.*;
 
 public class DataStructureStorage {
+    Runtime runtime = Runtime.getRuntime();
     public PhoneContact[] phoneArray;
     public LinkedList<PhoneContact> phoneContactLinkedList = new LinkedList<>();
     public RBTreeMap<String, PhoneContact> phoneContactRBTreeMap = new RBTreeMap<>();
@@ -12,8 +12,11 @@ public class DataStructureStorage {
     public HeapAdaptablePriorityQueue<String, PhoneContact> phoneContactHeap
             = new HeapAdaptablePriorityQueue<>();
 
+    public int capacity = 0;
+    public int mb = 1024 * 1024;
+
     public void createPhoneArray(String fileSizeChoice) {
-        int capacity = 0;
+
         switch (fileSizeChoice) {
             case "data/tiny.csv" -> capacity = 21;
             case "data/small.csv" -> capacity = 50001;
@@ -22,6 +25,14 @@ public class DataStructureStorage {
         }
 
         phoneArray = new PhoneContact[capacity];
+    }
+
+    public void clearDataStructure() {
+            phoneArray = new PhoneContact[capacity];
+            phoneContactLinkedList = new LinkedList<>();
+            phoneContactRBTreeMap = new RBTreeMap<>();
+            phoneContactHashtable = new Hashtable<>();
+            phoneContactHeap = new HeapAdaptablePriorityQueue<>();
     }
 
     public String searchDataStructure(String dataStructureChoice, String searchKey) {
@@ -47,12 +58,14 @@ public class DataStructureStorage {
     }
 
     public String searchArray(String searchKey) {
-            for (int i = 0; i < phoneArray.length - 1; i++) {
+        for (int i = 0; i < phoneArray.length - 1; i++) {
+            if (phoneArray[i] != null) {
                 if (Objects.equals(searchKey, phoneArray[i].SearchKey))
                     return phoneArray[i].toString();
             }
+        }
 
-            return "Could not find entry from given search key.";
+        return "Could not find entry from given search key.";
     }
 
     public String searchLinkedList(String searchKey) {
@@ -94,5 +107,59 @@ public class DataStructureStorage {
         }
 
         return "Could not find entry from given search key.";
+    }
+
+    public void runInsertion(String dataStructureChoice,
+                             DataStructureStorage storage,
+                             CsvReader reader,
+                             OutputPanel outputPanel) {
+
+    }
+
+    public void runSearch(String dataStructureChoice,
+                     DataStructureStorage storage,
+                          OutputPanel outputPanel) {
+
+    }
+
+    public void runMeasurement(String dataStructureChoice,
+                               DataStructureStorage storage,
+                               CsvReader reader,
+                               OutputPanel outputPanel,
+                               String measurementChoice){
+
+        switch (measurementChoice) {
+            case "Insertion" -> runInsertion(dataStructureChoice,
+                    storage, reader, outputPanel);
+            case "Look-Up" -> runSearch(dataStructureChoice,
+                    storage, outputPanel);
+            case "Memory" -> findMemoryUsage(dataStructureChoice,
+                    storage, reader, outputPanel);
+        }
+    }
+
+    public void findMemoryUsage(String dataStructureChoice,
+                                DataStructureStorage storage,
+                                CsvReader reader,
+                                OutputPanel outputPanel) {
+
+        long initialMemory = runtime.freeMemory();
+        reader.readFile(dataStructureChoice,"data/small.csv", storage);
+        long afterMemory = runtime.freeMemory();
+        long smallMemory = (initialMemory - afterMemory) / mb;
+
+        initialMemory = runtime.freeMemory();
+        reader.readFile(dataStructureChoice, "data/medium.csv", storage);
+        afterMemory = runtime.freeMemory();
+        long mediumMemory = (initialMemory - afterMemory) / mb;
+
+        initialMemory = runtime.freeMemory();
+        reader.readFile(dataStructureChoice, "data/large.csv", storage);
+        afterMemory = runtime.freeMemory();
+        long largeMemory = (initialMemory - afterMemory) / mb;
+
+        outputPanel.results.setText("Small File: " + smallMemory + " mb\n" +
+                "Medium File: " + mediumMemory + " mb\n" +
+                "Large File: " + largeMemory + " mb");
     }
 }
