@@ -53,7 +53,7 @@ public class Main extends JFrame{
                 pack();
 
 //                storage.searchDataStructure(DataStructureChoice ,SearchKey, SearchResult);
-                SearchResult = storage.searchArray(SearchKey);
+                SearchResult = storage.searchDataStructure(DataStructureChoice, SearchKey);
                 System.out.println(SearchResult);
                 dataPanel.results.setText(SearchResult);
             }

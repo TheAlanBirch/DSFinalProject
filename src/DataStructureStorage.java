@@ -24,14 +24,26 @@ public class DataStructureStorage {
         phoneArray = new PhoneContact[capacity];
     }
 
-    public void searchDataStructure(String dataStructureChoice, String searchKey) {
+    public String searchDataStructure(String dataStructureChoice, String searchKey) {
         switch (dataStructureChoice) {
-            case "Array" -> searchArray(searchKey);
-            case "Linked List" -> searchLinkedList(searchKey);
-            case "Red-Black Tree" -> searchRBTreeMap(searchKey);
-            case "Hashtable" -> searchHashtable(searchKey);
-            case "Custom" -> searchHeap(searchKey);
+            case "Array" -> {
+                return searchArray(searchKey);
+            }
+            case "Linked List" -> {
+                return searchLinkedList(searchKey);
+            }
+            case "Red-Black Tree" -> {
+                return searchRBTreeMap(searchKey);
+            }
+            case "Hashtable" -> {
+                return searchHashtable(searchKey);
+            }
+            case "Custom" -> {
+                return searchHeap(searchKey);
+            }
         }
+
+        return "Error in searchDataStructure";
     }
 
     public String searchArray(String searchKey) {
@@ -43,51 +55,44 @@ public class DataStructureStorage {
             return "Could not find entry from given search key.";
     }
 
-    public void searchLinkedList(String searchKey, String searchResult) {
-        try {
+    public String searchLinkedList(String searchKey) {
             for (int i = 0; i < phoneContactLinkedList.size() - 1; i++) {
-                if (phoneContactLinkedList.get(i).SearchKey == searchKey)
-                    searchResult = phoneContactLinkedList.get(i).toString();
-            }
-        } catch(Exception e) {
-            searchResult = "Could not find entry from given search key.";
-        }
-    }
-
-    public void searchRBTreeMap(String searchKey, String searchResult) {
-        try {
-            if (phoneContactRBTreeMap.get(searchKey) != null)
-                searchResult = phoneContactRBTreeMap.get(searchKey).toString();
-        } catch(Exception e) {
-            searchResult = "Could not find entry from given search key.";
-        }
-    }
-
-    public void searchHashtable(String searchKey, String searchResult) {
-        try {
-            if (phoneContactHashtable.containsKey(searchKey))
-                searchResult = phoneContactHashtable.get(searchKey).toString();
-        } catch(Exception e) {
-            searchResult = "Could not find entry from given search key.";
-        }
-    }
-
-    public void searchHeap(String searchKey, String searchResult) {
-        try {
-            HeapAdaptablePriorityQueue<String, PhoneContact> tempHeap = phoneContactHeap;
-
-            System.out.println("Starting minimum: " + phoneContactHeap.min());
-            for (int i = 0;
-                 i < phoneContactHeap.size() - 1;
-                 i++) {
-
-                if (tempHeap.min().getKey() == searchKey)
-                    searchResult = tempHeap.removeMin().getValue().toString();
-                System.out.println(phoneContactHeap.min());
+                if (Objects.equals(phoneContactLinkedList.get(i).SearchKey, searchKey))
+                    return phoneContactLinkedList.get(i).toString();
             }
 
-        } catch(Exception e) {
-            searchResult = "Could not find entry from given search key.";
+        return "Could not find entry from given search key.";
+    }
+
+    public String searchRBTreeMap(String searchKey) {
+        if (phoneContactRBTreeMap.get(searchKey) != null)
+            return phoneContactRBTreeMap.get(searchKey).toString();
+
+        return "Could not find entry from given search key.";
+    }
+
+    public String searchHashtable(String searchKey) {
+        if (phoneContactHashtable.containsKey(searchKey))
+            return phoneContactHashtable.get(searchKey).toString();
+
+        return "Could not find entry from given search key.";
+    }
+
+    public String searchHeap(String searchKey) {
+        HeapAdaptablePriorityQueue<String, PhoneContact> tempHeap = phoneContactHeap;
+
+        System.out.println("Starting minimum: " + phoneContactHeap.min().getKey());
+        for (int i = 0;
+             i < phoneContactHeap.size() - 1;
+             i++) {
+
+            if (Objects.equals(tempHeap.min().getKey(), searchKey))
+                return tempHeap.removeMin().getValue().toString();
+            else
+                tempHeap.removeMin();
+            System.out.println(tempHeap.min().getKey());
         }
+
+        return "Could not find entry from given search key.";
     }
 }
