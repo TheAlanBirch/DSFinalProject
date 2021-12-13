@@ -3,6 +3,8 @@ import goodrichStructures.RBTreeMap;
 
 import java.util.*;
 import java.io.*;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 // Got this code from this website.
 //www.tutorialspoint.com/
@@ -164,5 +166,36 @@ public class CsvReader {
         } catch(IOException ioe) {
             ioe.printStackTrace();
         }
+    }
+
+    public void read1000Entries(String dataStructureChoice,
+                                DataStructureStorage storage,
+                                OutputPanel outputPanel) {
+        PhoneContact[] tempArray = new PhoneContact[500001];
+        readArray("data/small.csv", tempArray);
+//        ThreadLocalRandom.current().ints(0, 50000)
+//                .distinct().limit(1000).collect(Collectors.toCollection(ArrayList::new));
+
+
+    }
+
+    public void read1000Array(){
+
+    }
+
+    public void read1000List() {
+
+    }
+
+    public void read1000Tree() {
+
+    }
+
+    public void read1000Hashtable() {
+
+    }
+
+    public void read1000Heap() {
+
     }
 }

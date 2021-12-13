@@ -2,6 +2,7 @@ import goodrichStructures.HeapAdaptablePriorityQueue;
 import goodrichStructures.RBTreeMap;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class DataStructureStorage {
     Runtime runtime = Runtime.getRuntime();
@@ -113,6 +114,8 @@ public class DataStructureStorage {
                              DataStructureStorage storage,
                              CsvReader reader,
                              OutputPanel outputPanel) {
+
+        reader.read1000Entries(dataStructureChoice, storage, outputPanel);
 
     }
 
