@@ -9,8 +9,10 @@ public class Main extends JFrame{
     Runtime runtime = Runtime.getRuntime();
     MainMenu mainMenu = new MainMenu();
     SearchPanel searchPanel = new SearchPanel();
-    DataStructuresPanel dataStructuresPanel = new DataStructuresPanel();
-    StructureMeasurementPanel structureMeasurementPanel = new StructureMeasurementPanel();
+    DataStructuresPanel dataStructuresPanel =
+            new DataStructuresPanel();
+    StructureMeasurementPanel structureMeasurementPanel =
+            new StructureMeasurementPanel();
     DataPanel dataPanel = new DataPanel();
 
     String DataStructureChoice;
@@ -22,7 +24,8 @@ public class Main extends JFrame{
     OutputPanel outputPanel = new OutputPanel();
 
     CsvReader reader = new CsvReader();
-    DataStructureStorage storage = new DataStructureStorage();
+    DataStructureStorage storage =
+            new DataStructureStorage();
 
     public Main() {
         super("DS Final Project");
@@ -40,9 +43,12 @@ public class Main extends JFrame{
             pack();
         });
 
-        dataStructuresPanel.confirmButton.addActionListener(e -> {
-            DataStructureChoice = (String) dataStructuresPanel.dataStructureBox.getSelectedItem();
-            FileSizeChoice = dataStructuresPanel.fileSizeChoices.getSelection().getActionCommand();
+        dataStructuresPanel.confirmButton
+                .addActionListener(e -> {
+            DataStructureChoice = (String) dataStructuresPanel
+                    .dataStructureBox.getSelectedItem();
+            FileSizeChoice = dataStructuresPanel
+                    .fileSizeChoices.getSelection().getActionCommand();
             reader.readFile(DataStructureChoice, FileSizeChoice, storage);
             remove(dataStructuresPanel);
             add(searchPanel, BorderLayout.CENTER);
@@ -53,7 +59,9 @@ public class Main extends JFrame{
 
         searchPanel.searchButton.addActionListener(e -> {
             if (searchPanel.searchTerm.getText().length() == 0)
-                searchPanel.confirmationLabel.setText("You must enter something into the field in order to search!");
+                searchPanel.confirmationLabel
+                        .setText("You must enter something " +
+                                "into the field in order to search!");
             else {
                 SearchKey = searchPanel.searchTerm.getText();
                 System.out.println(SearchKey);
@@ -63,7 +71,8 @@ public class Main extends JFrame{
                 repaint();
                 pack();
 
-                SearchResult = storage.searchDataStructure(DataStructureChoice, SearchKey);
+                SearchResult = storage
+                        .searchDataStructure(DataStructureChoice, SearchKey);
                 System.out.println(SearchResult);
                 dataPanel.results.setText(SearchResult);
             }
@@ -97,20 +106,28 @@ public class Main extends JFrame{
 
         mainMenu.partTwo.addActionListener(e -> {
             remove(mainMenu);
-            add(structureMeasurementPanel, BorderLayout.CENTER);
+            add(structureMeasurementPanel,
+                    BorderLayout.CENTER);
             revalidate();
             repaint();
             pack();
         });
 
-        structureMeasurementPanel.confirmButton.addActionListener(e -> {
-            DataStructureChoice = (String) structureMeasurementPanel.dataStructureBox.getSelectedItem();
-            MeasurementChoice = structureMeasurementPanel.fileSizeChoices.getSelection().getActionCommand();
+        structureMeasurementPanel.confirmButton
+                .addActionListener(e -> {
+            DataStructureChoice = (String) structureMeasurementPanel
+                    .dataStructureBox.getSelectedItem();
+            MeasurementChoice = structureMeasurementPanel
+                    .fileSizeChoices.getSelection().getActionCommand();
 
-            outputPanel.dataStructureName.setText("Data Structure: " + DataStructureChoice);
-            outputPanel.processName.setText("Process: " + MeasurementChoice);
+            outputPanel.dataStructureName
+                    .setText("Data Structure: " + DataStructureChoice);
+            outputPanel.processName
+                    .setText("Process: " + MeasurementChoice);
 
-            storage.findMemoryUsage(DataStructureChoice, storage, reader, outputPanel);
+            storage.runMeasurement(DataStructureChoice,
+                    storage, reader,
+                    outputPanel, MeasurementChoice);
 
             remove(structureMeasurementPanel);
             add(outputPanel);
@@ -119,7 +136,31 @@ public class Main extends JFrame{
             pack();
         });
 
+        outputPanel.resetButton.addActionListener(e -> {
+            DataStructureChoice = "";
+            MeasurementChoice = "";
 
+            storage.clearDataStructure();
+
+            remove(outputPanel);
+            add(structureMeasurementPanel);
+            revalidate();
+            repaint();
+            pack();
+        });
+
+        outputPanel.restartButton.addActionListener(e -> {
+            DataStructureChoice = null;
+            MeasurementChoice = null;
+
+            storage.clearDataStructure();
+
+            remove(outputPanel);
+            add(mainMenu);
+            revalidate();
+            repaint();
+            pack();
+        });
 
         setLocation(800, 400);
         add(mainMenu, BorderLayout.CENTER);

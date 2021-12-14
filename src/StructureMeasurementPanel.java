@@ -8,19 +8,23 @@ public class StructureMeasurementPanel extends JPanel {
     JRadioButton lookUpButton = new JRadioButton("Look-Up");
     JRadioButton memoryUsageButton = new JRadioButton("Memory Usage");
     JButton confirmButton = new JButton("Confirm Choice");
-    JLabel warningLabel = new JLabel("This process could take a while so please be patient.");
+    JLabel warningLabel = new JLabel
+            ("This process could take a while so please be patient.");
 
     JComboBox<String> dataStructureBox = new JComboBox<>(dataStructures);
     ButtonGroup fileSizeChoices = new ButtonGroup();
 
     public StructureMeasurementPanel() {
-        JLabel dataStructureLabel = new JLabel("Data Structures to utilize: ");
-        JLabel fileSizeLabel = new JLabel("Measurements that can be taken: ");
+        JLabel dataStructureLabel =
+                new JLabel("Data Structures to utilize: ");
+        JLabel fileSizeLabel =
+                new JLabel("Measurements that can be taken: ");
 
         fileSizeChoices.add(insertionButton);
         fileSizeChoices.add(lookUpButton);
         fileSizeChoices.add(memoryUsageButton);
-        fileSizeChoices.setSelected(insertionButton.getModel(), true);
+        fileSizeChoices.
+                setSelected(insertionButton.getModel(), true);
 
         insertionButton.setActionCommand("Insertion");
         lookUpButton.setActionCommand("Look-Up");

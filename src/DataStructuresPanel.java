@@ -10,7 +10,8 @@ public class DataStructuresPanel extends JPanel {
     JButton confirmButton = new JButton("Confirm Choice");
     String[] dataStructures = {"Array", "Linked List",
             "Red-Black Tree", "Hashtable", "Custom"};
-    JComboBox<String> dataStructureBox = new JComboBox<>(dataStructures);
+    JComboBox<String> dataStructureBox =
+            new JComboBox<>(dataStructures);
     ButtonGroup fileSizeChoices = new ButtonGroup();
 
     public DataStructuresPanel() {
@@ -19,7 +20,8 @@ public class DataStructuresPanel extends JPanel {
                 "Data Structures to search:"
         );
 
-        JLabel fileSizeLabel = new JLabel("File sizes that can be loaded: ");
+        JLabel fileSizeLabel =
+                new JLabel("File sizes that can be loaded: ");
 
         fileSizeChoices.add(tinyFile);
         fileSizeChoices.add(smallFile);

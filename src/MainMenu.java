@@ -18,7 +18,8 @@ public class MainMenu extends JPanel {
     private static void setLookAndFeel() {
         try {
             UIManager.setLookAndFeel(
-                    "javax.swing.plaf.nimbus.NimbusLookAndFeel"
+                    "javax.swing.plaf" +
+                            ".nimbus.NimbusLookAndFeel"
             );
         } catch (Exception exc) {
             System.out.println(exc.getMessage());

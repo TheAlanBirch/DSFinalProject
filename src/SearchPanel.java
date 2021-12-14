@@ -9,7 +9,8 @@ public class SearchPanel extends JPanel{
 
     public SearchPanel() {
 
-        JLabel searchTermLabel = new JLabel("Search Key: ");
+        JLabel searchTermLabel =
+                new JLabel("Search Key: ");
 
         add(searchTermLabel);
         add(searchTerm);
@@ -21,7 +22,8 @@ public class SearchPanel extends JPanel{
     private static void setLookAndFeel() {
         try {
             UIManager.setLookAndFeel(
-                    "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel"
+                    "com.sun.java.swing." +
+                            "plaf.nimbus.NimbusLookAndFeel"
             );
         } catch (Exception exc) {
             System.out.println(exc.getMessage());
